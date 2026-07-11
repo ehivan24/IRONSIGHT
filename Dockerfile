@@ -12,6 +12,7 @@ RUN npm ci
 # 2) Build the standalone server bundle
 FROM node:22-alpine AS builder
 WORKDIR /app
+RUN mkdir -p public && touch public/.gitkeep
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
